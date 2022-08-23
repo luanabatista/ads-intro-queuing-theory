@@ -1,5 +1,7 @@
 import math 
 
+#exibir icone e 
+
 #- a quantidade média de usuários que chegam por hora 165
 #- a capacidade de atendimento de cada funcionário 15
 #- a quantidade de atendentes no local 5
@@ -28,7 +30,7 @@ print(tempoSistema)
 #- e caso não seja possivel escalar mais clientes, informa quantos cada um dos 5 teria que atender por hora
 
 # quantidade de funcionarios ideal 
-funcIdeal = math.ceil(mediaChegada/mediaAtendimento)
+funcIdeal = math.ceil(mediaChegada/(mediaAtendimento/atendentes))
 print(funcIdeal)
 
 # quantidade ajuste atendimento por hora
