@@ -27,7 +27,7 @@ class DataEntryForm(ttk.Frame):
         self.create_form_entry("Taxa de Chegada - λ:\n(em horas)", self.taxa_chegada)
         self.create_form_entry("Pontos de Atendimento - M:\n(unidades)", self.qtd_atendentes)
         self.create_form_entry("Taxa de Atendimento:\n(por atendente em horas)", self.taxa_atendimento_atd)
-        self.create_form_entry("Taxa de Atendimento -μ:\n(total em horas)", self.taxa_atendimento, READONLY)
+        self.create_form_entry("Taxa de Atendimento - μ:\n(total em horas)", self.taxa_atendimento, READONLY)
         self.create_buttonbox()
 
         # form header
@@ -35,15 +35,15 @@ class DataEntryForm(ttk.Frame):
         hdr = ttk.Label(master=self, text=hdr_txt, width=50)
         hdr.pack(fill=X, pady=(20,10))
 
-        self.create_form_entry("Tempo Estimado de Espera\nna Fila:", self.tempo_fila, READONLY)
-        self.create_form_entry("Tempo Estimado de\nPermanência no Sistema:", self.tempo_sistema, READONLY)
+        self.create_form_entry("Tempo Estimado de Espera\nna Fila (Wq):", self.tempo_fila, READONLY)
+        self.create_form_entry("Tempo Estimado de\nPermanência no Sistema (W):", self.tempo_sistema, READONLY)
         self.create_form_entry("Quantidade Ideal de\nAtendentes (M):", self.qtd_ideal_atd, READONLY)
 
         hdr_txt = "Ou"
         hdr = ttk.Label(master=self, text=hdr_txt, width=50, anchor=CENTER)
         hdr.pack(fill=X, pady=(3,3))
 
-        self.create_form_entry("Taxa Média de Atendimento\nIdeal (por atendente):", self.taxa_ideal_atd, READONLY)
+        self.create_form_entry("Taxa Média de Atendimento\nIdeal (μ/atendente):", self.taxa_ideal_atd, READONLY)
 
     def on_change(self):
         self.taxa_atendimento.set(self.taxa_atendimento_atd.get()*self.qtd_atendentes.get())
