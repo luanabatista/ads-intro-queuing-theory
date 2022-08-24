@@ -26,9 +26,6 @@ print(tempoFila)
 tempoSistema = 1/(mediaAtendimento-mediaChegada)
 print(tempoSistema)
 
-#- informa um cenário ideal para que se possa convocar mais funcionarios
-#- e caso não seja possivel escalar mais clientes, informa quantos cada um dos 5 teria que atender por hora
-
 # quantidade de funcionarios ideal 
 funcIdeal = math.ceil(mediaChegada/(mediaAtendimento/atendentes))
 print(funcIdeal)
