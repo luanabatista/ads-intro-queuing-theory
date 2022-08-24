@@ -1,11 +1,5 @@
 import math 
 
-#exibir icone e 
-
-#- a quantidade média de usuários que chegam por hora 165
-#- a capacidade de atendimento de cada funcionário 15
-#- a quantidade de atendentes no local 5
-
 # Taxa média de chegada (λ) em horas
 mediaChegada = 165
 
@@ -14,9 +8,6 @@ atendentes = 5
 
 # Taxa média de atendimento do sistema Mi (μ) em horas
 mediaAtendimento = 15*atendentes
-
-#- o tempo de espera de um cliente nesta fila
-#- o tempo estimado de permanência no sistema
 
 #- Tempo médio de espera apenas na Fila (Wq)
 tempoFila = mediaChegada/(mediaAtendimento*(mediaAtendimento-mediaChegada))
