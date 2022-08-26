@@ -1,6 +1,7 @@
 import math
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
+import tkinter.messagebox
 
 class DataEntryForm(ttk.Frame):
 
@@ -92,8 +93,14 @@ class DataEntryForm(ttk.Frame):
     def on_submit(self):
         # Executa a função 'on_change' em caso de mudanças
         self.on_change()
-        """Evaluate the results"""
 
+        # Exibe mensagem acerca do resultado da avaliação
+        if (self.taxa_atendimento.get() > self.taxa_chegada.get()):
+            tkinter.messagebox.showinfo("Resultado",  "Sistema balanceado\n\nNenhum ajuste é necessário.")    
+        else:
+            tkinter.messagebox.showwarning("Resultado",  "Sistema desbalanceado\n\nÉ necessário aumentar o número\nde atendentes ou realizar mais\natendimentos/hora.")
+            
+        """Evaluate the results"""
         # Chama a função que calcula o Tempo de Espera de um cliente na fila
         valor_tempo_fila, tempo_fila = self.get_tempo_fila(self)
         self.tempo_fila.set(tempo_fila)
@@ -114,6 +121,7 @@ class DataEntryForm(ttk.Frame):
         print("Tempo de Permanência no Sistema (W): " + valor_tempo_sistema)
         print("Quantidade Ideal de Atendentes (M): " + self.qtd_ideal_atd.get())
         print("Taxa de Atendimento Ideal (μ): " + self.taxa_ideal_atd.get()+"\n")
+        
         
     # Função executada ao clicar no botão 'Cancelar'
     def on_cancel(self):
@@ -179,6 +187,6 @@ class DataEntryForm(ttk.Frame):
 
 # Código que executa a aplicação, exibindo assim a tela
 if __name__ == "__main__":
-    app = ttk.Window("Avaliação de Desempenho", "litera")
+    app = ttk.Window("Avaliação de Desempenho", "litera", scaling=1.5, position=(754,200))
     DataEntryForm(app)
     app.mainloop()
