@@ -129,7 +129,6 @@ class DataEntryForm(ttk.Frame):
         self.quit()
 
     #### FUNÇÕES REFERENTES AOS CÁLCULOS DE AVALIAÇÃO DE DESEMPENHO ####
-    
     @staticmethod
     def get_tempo_fila(self):
         if self.taxa_atendimento.get() == self.taxa_chegada.get(): 
@@ -146,11 +145,6 @@ class DataEntryForm(ttk.Frame):
             tempo = 1/(self.taxa_atendimento.get()-self.taxa_chegada.get())
             return self.str_result(tempo)
 
-    # Configuração ideal do sistema 
-    #  Implemente então uma mensagem que informe o cenário ideal para o ADM do sistema, 
-    # para que o mesmo possa convocar ou escalar mais funcionários para atender a esta 
-    # situação-demanda, ou ainda informar quantos clientes cada um dos 5 funcionários 
-    # teria que atender por hora, em caso de impossibilidade de adição de atendentes extras.
     @staticmethod
     def get_qtd_ideal_atd(self):
         qtd_ideal_atd = math.ceil(self.taxa_chegada.get()/(self.taxa_atendimento.get()/self.qtd_atendentes.get()))
@@ -165,16 +159,19 @@ class DataEntryForm(ttk.Frame):
             taxa_ideal_atd += 1
         return str(taxa_ideal_atd) + " atendimentos/h"
 
-    # Função que realiza o tratamento de exceção e de erros para os cálculos de tempo
+    # Função que realiza o tratamento de exceção e de erros para os 
+    # cálculos de tempo
     @staticmethod
     def str_result(tempo):
         # Recebe o parâmetro do tempo já calculado
         result = ""
-        # Se for menor que zero, então o sistema está desbalanceado e o tempo tende ao infinito
+        # Se for menor que zero, então o sistema está desbalanceado e o tempo 
+        # tende ao infinito
         if tempo < 0:
             # Define resultado infinito
             result = "∞"
-        # Caso contrário, verifica a quantidade de horas, minutos e segundos do sistema e retorna
+        # Caso contrário, verifica a quantidade de horas, minutos e segundos 
+        # do sistema e retorna
         else:
             horas = math.floor(tempo)
             minutos = math.floor((tempo-horas)*60)
